@@ -13,19 +13,19 @@ use Symfony\Component\HttpClient\HttpClient;
 class RestController extends AbstractController
 {
     /**
-     * @Route("/simulate", name="simulate")
+     * @Route("/simulate", name="simulate", methods={"POST"})
      */
-    public function test()
+    public function simulate()
     {
-
         $client = HttpClient::create();
-        $response = $client->request('GET', 'https://api.github.com/repos/symfony/symfony-docs');
+
+        $response = $client->request('POST', 'http://api.hackyeah.bluepaprica.ovh/order/save', [
+            'json' => ['products' => [["code" => 1, "quantity" => 1]]],
+        ]);
 
         $statusCode = $response->getStatusCode();
-        $contentType = $response->getHeaders()['content-type'][0];
         $content = $response->getContent();
-        $content = $response->toArray();
 
-        return new JsonResponse($content, 200);
+        return new Response($content, $statusCode);
     }
 }
