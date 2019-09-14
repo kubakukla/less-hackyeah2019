@@ -1,0 +1,41 @@
+.sort-list {
+  display: flex;
+  justify-content: flex-start;
+  span {
+    position: relative;
+    padding-left: 13px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 22px;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    &.plastic {
+      &:before {
+        background-color: rgba(252, 240, 152, 1);
+      }
+    }
+    &.paper {
+      &:before {
+        background-color: rgba(179, 223, 239, 1);
+      }
+    }
+    &.general {
+      &:before {
+        background-color: rgba(139, 139, 139, 1);
+      }
+    }
+    &.bio {
+      &:before {
+        background-color: rgba(198, 155, 142, 1);
+      }
+    }
+  }
+}
