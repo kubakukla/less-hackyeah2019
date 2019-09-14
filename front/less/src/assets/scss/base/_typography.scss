@@ -4,36 +4,25 @@
 body {
   font-size: 14px;
   line-height: 22px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 400;
+  color: $text-color;
   @include respond-to('medium') {
     font-size: 15px;
     line-height: 24px;
   }
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  margin: 8px 0;
-  font-weight: normal;
-}
-
-h4, h5 {
-  font-family: 'Poppins', sans-serif;
-  margin: 5px 0;
-  @include respond-to('medium') {
-    margin: 12px 0;
-  }
+h1, h2, h3, h4, h5 {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 700;
+  color: $text-color;
 }
 
 h1 {
-  font-size: 38px;
-  line-height: 38px;
+  font-size: 22px;
+  line-height: 28px;
   margin-bottom: 23px;
-  @include respond-to('medium') {
-    font-size: 64px;
-    line-height: 1;
-    margin-bottom: 27px;
-  }
 }
 
 h2 {
