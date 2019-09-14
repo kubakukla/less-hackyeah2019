@@ -25,5 +25,6 @@
   .banner {
     background-size: cover;
     min-height: 344px;
+    padding: 52px 0;
   }
 </style>

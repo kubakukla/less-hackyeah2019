@@ -5,9 +5,14 @@
         <a href="/" class="header__logo">
           <img alt="Vue logo" src="./../../assets/img/logo.png">
         </a>
-        <div class="avatar">
-          <span class="avatar-img" :style="{ backgroundImage: `url(${avatarImage})` }"></span>
-          <i class="icomoon-arrow"></i>
+        <div class="header__actions">
+          <div class="avatar">
+            <figure class="avatar__img" :style="{ backgroundImage: `url(${avatarImage})` }"></figure>
+            <i class="icomoon-arrow"></i>
+          </div>
+          <div class="hamburger">
+            <i class="icomoon-menu"></i>
+          </div>
         </div>
       </div>
     </div>
