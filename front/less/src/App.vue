@@ -1,17 +1,23 @@
 <template>
   <div id="app">
+    <Header />
     <Nav />
-    <router-view/>
+    <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
-  import Nav from '@/components/Layout/Nav.vue'
+  import Header from '@/components/Layout/Header.vue';
+  import Nav from '@/components/Layout/Nav.vue';
+  import Footer from '@/components/Layout/Footer.vue';
 
   export default {
     components: {
-      Nav
+      Header,
+      Nav,
+      Footer
     }
   }
 </script>

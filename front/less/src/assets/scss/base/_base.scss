@@ -26,9 +26,6 @@ html, body {
 
 body {
   background-color: $color-white;
-  @include respond-to('small') {
-
-  }
 }
 
 /**

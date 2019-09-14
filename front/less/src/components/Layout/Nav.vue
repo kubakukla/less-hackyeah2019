@@ -1,12 +1,10 @@
 <template>
-  <header>
-    <div class="container">
-      <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </nav>
-    </div>
-  </header>
+  <aside class="navigation">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+  </aside>
 </template>
 
 <script>
