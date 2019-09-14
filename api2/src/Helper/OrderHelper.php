@@ -7,7 +7,11 @@ use App\Entity\Product;
 
 class OrderHelper
 {
-    public function calculateTrashData(Order $order)
+    /**
+     * @param Order $order
+     * @return array
+     */
+    public function calculateTrashData(Order $order) :array
     {
         $items = $order->getOrderItems();
         $result = [];
@@ -26,5 +30,20 @@ class OrderHelper
         }
 
         return $result;
+    }
+
+    /**
+     * @param Order $order
+     * @return array
+     */
+    public function getPrunedTrashData(Order $order) :array
+    {
+        $totals = $this->calculateTrashData($order);
+        foreach ($totals as $name => $value) {
+            if ($value <= 0) {
+                unset($totals[$name]);
+            }
+        }
+        return $totals;
     }
 }
