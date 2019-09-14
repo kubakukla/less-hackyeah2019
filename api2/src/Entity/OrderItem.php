@@ -26,6 +26,23 @@ class OrderItem
      */
     private $product;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $quantity;
+
+    public function getQuantity(): float
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity): self
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,7 +60,7 @@ class OrderItem
         return $this;
     }
 
-    public function getProductId(): ?Product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
