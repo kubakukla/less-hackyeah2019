@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,10 +29,14 @@ class Orders
     private $created_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\OrderItems", inversedBy="order_id")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\OrderItems", mappedBy="order_id")
      */
     private $orderItems;
+
+    public function __construct()
+    {
+        $this->orderItems = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,14 +67,33 @@ class Orders
         return $this;
     }
 
-    public function getOrderItems(): ?OrderItems
+    /**
+     * @return Collection|OrderItems[]
+     */
+    public function getOrderItems(): Collection
     {
         return $this->orderItems;
     }
 
-    public function setOrderItems(?OrderItems $orderItems): self
+    public function addOrderItem(OrderItems $orderItem): self
     {
-        $this->orderItems = $orderItems;
+        if (!$this->orderItems->contains($orderItem)) {
+            $this->orderItems[] = $orderItem;
+            $orderItem->setOrderId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderItem(OrderItems $orderItem): self
+    {
+        if ($this->orderItems->contains($orderItem)) {
+            $this->orderItems->removeElement($orderItem);
+            // set the owning side to null (unless already changed)
+            if ($orderItem->getOrderId() === $this) {
+                $orderItem->setOrderId(null);
+            }
+        }
 
         return $this;
     }

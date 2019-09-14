@@ -56,12 +56,6 @@ class Products
      */
     private $code;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\OrderItems", inversedBy="product_id")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $orderItems;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -159,18 +153,6 @@ class Products
     public function setCode(string $code): self
     {
         $this->code = $code;
-
-        return $this;
-    }
-
-    public function getOrderItems(): ?OrderItems
-    {
-        return $this->orderItems;
-    }
-
-    public function setOrderItems(?OrderItems $orderItems): self
-    {
-        $this->orderItems = $orderItems;
 
         return $this;
     }
