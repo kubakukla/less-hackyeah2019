@@ -17,11 +17,6 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $entity_id;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -34,18 +29,6 @@ class User
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getEntityId(): ?int
-    {
-        return $this->entity_id;
-    }
-
-    public function setEntityId(int $entity_id): self
-    {
-        $this->entity_id = $entity_id;
-
-        return $this;
     }
 
     public function getName(): ?string
