@@ -42,7 +42,7 @@ class OrderController extends AbstractController
 
             if (null === $product) {
                 return new JsonResponse([
-                    "Product with code ${$item['code']} doesn't exist"
+                    "Product with code ${item['code']} doesn't exist"
                 ], Response::HTTP_BAD_REQUEST);
             }
 
@@ -57,7 +57,7 @@ class OrderController extends AbstractController
 
         $entityManager->flush();
 
-        return new JsonResponse($data);
+        return new JsonResponse(['id' => $order->getId()]);
     }
 
     /**
