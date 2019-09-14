@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="panel-s">
     <div class="container">
       Last choice
     </div>

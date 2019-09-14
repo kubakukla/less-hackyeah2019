@@ -3,6 +3,7 @@
     <div class="banner__content">
       <div class="container container--inside">
         <h1>You bought less<br> plastic than<br> a week ago!</h1>
+        <router-link to="/about" class="btn-link">See statistics <i class="icomoon-left-arrow"></i></router-link>
       </div>
     </div>
   </section>
