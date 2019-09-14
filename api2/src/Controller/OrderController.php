@@ -10,6 +10,7 @@ use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
@@ -22,7 +23,7 @@ class OrderController extends AbstractController
      * @return JsonResponse
      * @throws \Exception
      */
-    public function saveOrder(Request $request)
+    public function save(Request $request)
     {
         $data = json_decode($request->getContent(), true);
         $items = $data['products'];
@@ -38,6 +39,13 @@ class OrderController extends AbstractController
         foreach ($items as $item) {
             /** @var Product $product */
             $product = $productRepository->findOneBy(['code' => $item['code']]);
+
+            if (null === $product) {
+                return new JsonResponse([
+                    "Product with code ${$item['code']} doesn't exist"
+                ], Response::HTTP_BAD_REQUEST);
+            }
+
             $quantity = $item['quantity'];
 
             $orderItem = new OrderItem();
