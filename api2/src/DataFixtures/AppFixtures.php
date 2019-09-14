@@ -14,6 +14,69 @@ class AppFixtures extends Fixture
 {
     const NUMBER_OF_PRODUCTS = 10;
 
+    const PRODUCTS = [
+        [
+            'name' => 'Bananas',
+            'type' => 5,
+            'trash' => 100,
+            'tip' => 'Banana peels are not recyclable. They are food waste and therefore must be composted instead of recycled.',
+        ],
+        [
+            'name' => 'Notebook',
+            'type' => 3,
+            'trash' => 100,
+            'tip' => 'The most important thing for recycling paper is that there is NO contamination in the recycling bin. If so, put it into general bin.',
+        ],
+        [
+            'name' => 'Cotton swabs',
+            'type' => 1,
+            'trash' => 100,
+            'tip' => 'You can recycle cotton swabs by putting them in your bio bin, just be sure to only add cotton swabs that have cardboard rather that plastic handles.',
+        ],
+        [
+            'name' => 'Orange juice',
+            'type' => 2,
+            'trash' => 100,
+            'tip' => 'Plastic bottles are widely collected by local authorities. You can also take them to recycling facilities.',
+        ],
+        [
+            'name' => 'Jam',
+            'type' => 4,
+            'trash' => 100,
+            'tip' => 'Unlike most materials that lose their quality over time, glass can be recycled infinitely with no loss in purity!',
+        ],
+        [
+            'name' => 'Eggs',
+            'type' => 5,
+            'trash' => 100,
+            'tip' => 'Eggshells are not recyclable. They are food waste and therefore must be composted instead of recycled.',
+        ],
+        [
+            'name' => 'Paper bag',
+            'type' => 3,
+            'trash' => 100,
+            'tip' => 'The most important thing for recycling paper is that there is NO contamination in the recycling bin. If so, put it into general bin.',
+        ],
+        [
+            'name' => 'Flowers',
+            'type' => 1,
+            'trash' => 100,
+            'tip' => 'Composting expired flowers helps to avoid environmental waste.',
+        ],
+        [
+            'name' => 'Water bottle',
+            'type' => 2,
+            'trash' => 100,
+            'tip' => 'Plastic bottles are widely collected by local authorities. You can also take them to recycling facilities.',
+        ],
+        [
+            'name' => 'Wine',
+            'type' => 4,
+            'trash' => 100,
+            'tip' => 'Unlike most materials that lose their quality over time, glass can be recycled infinitely with no loss in purity!',
+        ],
+    ];
+
     /** @var ProductRepository */
     private $productRepository;
 
@@ -34,16 +97,17 @@ class AppFixtures extends Fixture
 
     private function loadProducts(ObjectManager $manager)
     {
-        for ($i = 1; $i <= self::NUMBER_OF_PRODUCTS; $i++) {
+        foreach (self::PRODUCTS as $i => $fixture) {
             $product = new Product();
-            $product->setName("Product ${i}");
+            $product->setName($fixture['name']);
+            $product->setTip($fixture['tip']);
 
-            $type = $i % 5 + 1;
+            $type = $fixture['type'];
             $product->setType($type);
             $typeSetter = 'set'.ucfirst(Product::TYPES[$type]);
-            $product->$typeSetter(random_int(1, 100));
+            $product->$typeSetter($fixture['trash']);
 
-            $product->setCode($i);
+            $product->setCode($i + 1);
 
             $manager->persist($product);
         }
