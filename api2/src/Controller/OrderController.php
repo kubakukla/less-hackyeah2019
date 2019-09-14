@@ -53,7 +53,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("order/get/{id}", name="order_get")
+     * @Route("/order/get/{id}", name="order_get")
      * @param int $id
      * @return JsonResponse
      */
