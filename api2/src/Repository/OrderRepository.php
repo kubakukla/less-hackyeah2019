@@ -103,4 +103,18 @@ class OrderRepository extends ServiceEntityRepository
 
         return $result;
     }
+
+    public function getNotification($userId)
+    {
+        $order = $this->findOneBy(
+            ['user_id' => $userId],
+            ['created_at' => 'desc']
+        );
+
+        return [
+            'id' => $order->getId(),
+            'created_at' => $order->getCreatedAt()->getTimestamp(),
+            'item_count' => count($order->getOrderItems()),
+        ];
+    }
 }
