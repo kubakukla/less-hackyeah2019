@@ -38,3 +38,24 @@ button{
     text-transform: uppercase;
   }
 }
+
+.btn-generate {
+  position: fixed;
+  right: -35px;
+  top: 215px;
+  transform: rotate(-90deg);
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(149, 149, 149, 1);
+  background-color: rgba(214, 214, 214, 0.71);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.11);
+  padding: 7px 15px;
+  border-radius: 13px;
+  i {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: bottom;
+    transform: rotate(85deg);
+    margin-left: 5px;
+  }
+}

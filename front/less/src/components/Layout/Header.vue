@@ -10,7 +10,7 @@
             <figure class="avatar__img" :style="{ backgroundImage: `url(${avatarImage})` }"></figure>
             <i class="icomoon-arrow"></i>
           </div>
-          <div class="hamburger">
+          <div class="hamburger" @click="NavToggle">
             <i class="icomoon-menu"></i>
           </div>
         </div>
@@ -27,6 +27,11 @@
       return {
         avatarImage
       };
+    },
+    methods: {
+      NavToggle() {
+        this.$store.commit('changeNavActive')
+      }
     }
   }
 </script>
