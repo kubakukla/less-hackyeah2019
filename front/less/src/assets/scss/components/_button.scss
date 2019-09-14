@@ -19,3 +19,22 @@ button{
     font-size: 6px;
   }
 }
+
+.btn-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  i {
+    font-size: 16px;
+  }
+  span {
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    display: block;
+    margin-top: 3px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
