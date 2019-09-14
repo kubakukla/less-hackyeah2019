@@ -1,0 +1,29 @@
+.last-buy {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 21px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+  padding: 28px 20px;
+  color: $color-accent;
+  & + .last-buy {
+    margin-top: 20px;
+  }
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    margin-bottom: 22px;
+    padding-right: 60px;
+    .date {
+      position: absolute;
+      right: 0;
+      top: 2px;
+      color: $color-gray;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    em {
+      font-style: normal;
+      margin: 0 8px;
+    }
+  }
+}

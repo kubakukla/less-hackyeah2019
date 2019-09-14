@@ -1,7 +1,15 @@
 <template>
   <div class="panel">
     <div class="container">
-      Last choices
+      <div class="container container--inside">
+        <h2>Latest choices</h2>
+      </div>
+      <LastChoice />
+      <LastChoice />
+      <LastChoice />
+      <LastChoice />
+      <LastChoice />
+      <LastChoice />
       <LastChoice />
       <LastChoice />
       <LastChoice />

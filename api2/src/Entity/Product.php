@@ -5,10 +5,18 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
-class Products
+class Product
 {
+    const TYPES = [
+        1 => 'general',
+        2 => 'plastic',
+        3 => 'paper',
+        4 => 'glass',
+        5 => 'bio'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -55,12 +63,6 @@ class Products
      * @ORM\Column(type="string", length=255)
      */
     private $code;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\OrderItems", inversedBy="product_id")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $orderItems;
 
     public function getId(): ?int
     {
@@ -159,18 +161,6 @@ class Products
     public function setCode(string $code): self
     {
         $this->code = $code;
-
-        return $this;
-    }
-
-    public function getOrderItems(): ?OrderItems
-    {
-        return $this->orderItems;
-    }
-
-    public function setOrderItems(?OrderItems $orderItems): self
-    {
-        $this->orderItems = $orderItems;
 
         return $this;
     }
