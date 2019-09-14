@@ -1,3 +1,58 @@
 .navigation {
-  display: none;
+  position: fixed;
+  right: -100vw;
+  top: 0;
+  height: 100vh;
+  width: 80%;
+  z-index: 11;
+  background-color: #F2F2F2;
+  transition: $transition-base;
+  &.active {
+    right: 0;
+  }
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 22px;
+    width: 18px;
+    height: 17px;
+    &:before, &:after {
+      position: absolute;
+      left: 9px;
+      top: 0;
+      content: ' ';
+      height: 20px;
+      width: 2px;
+      background-color: $color-accent;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+  nav {
+    padding: 87px 53px 10px 40px;
+   a{
+     display: flex;
+     justify-content: flex-end;
+     & + a {
+       margin-top: 20px;
+     }
+     span {
+       font-weight: 700;
+       font-size: 12px;
+       line-height: 20px;
+       display: block;
+       text-align: center;
+       text-transform: uppercase;
+       margin-right: 14px;
+     }
+     i {
+       font-size: 14px;
+       width: 15px;
+     }
+   }
+  }
 }

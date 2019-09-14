@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Helper\ProductHelper;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,37 +15,61 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /** @var string  */
+    const ITEMS = "items";
+
+    /** @var ProductHelper  */
+    protected $helper;
+
+    /**
+     * ProductRepository constructor.
+     * @param ManagerRegistry $registry
+     * @param ProductHelper $helper
+     */
+    public function __construct(ManagerRegistry $registry, ProductHelper $helper)
     {
         parent::__construct($registry, Product::class);
+        $this->helper = $helper;
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getProductHelper() :ProductHelper
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->helper;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    /**
+     * @param Product $product
+     * @param int $qty
+     * @return array
+     */
+    public function calculateProductTrash(Product $product, int $qty = 1) :array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $this->helper->calculateProductTrash($product, $qty);
     }
-    */
+
+    /**
+     * @param Product $product
+     * @param int $qty
+     * @return array
+     */
+    public function getPrunedProductTrash(Product $product, int $qty = 1) :array
+    {
+        return $this->helper->getPrunedProductTrash($product, $qty);
+    }
+
+    /**
+     * @param Product $product
+     * @param int $qty
+     * @param array $data
+     * @return array
+     */
+    public function addProductTrashData(Product $product, int $qty = 1, array $data = [])
+    {
+        $data[self::ITEMS][$product->getId()] =
+            [
+                'name' => $product->getName(),
+                'totals_trash' => $this->getPrunedProductTrash($product, $qty)
+            ];
+        return $data;
+    }
 }

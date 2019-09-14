@@ -4,6 +4,10 @@
     <Nav />
     <router-view />
     <Footer />
+    <button class="btn-generate" @click="getShopData">
+      Simulate Shopping
+      <i class="icomoon-shopping-cart"></i>
+    </button>
   </div>
 </template>
 
@@ -18,6 +22,15 @@
       Header,
       Nav,
       Footer
+    },
+    methods: {
+      getShopData() {
+        this.axios.get('http://api.simulation.hackyeah.bluepaprica.ovh/simulate').then((response) => {
+          console.log(response.data);
+        }).catch(error => {
+          console.log(error);
+        })
+      }
     }
   }
 </script>
