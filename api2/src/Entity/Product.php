@@ -9,6 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+    const TYPES = [
+        1 => 'general',
+        2 => 'plastic',
+        3 => 'paper',
+        4 => 'glass',
+        5 => 'bio'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
