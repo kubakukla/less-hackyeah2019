@@ -1,0 +1,38 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+button{
+  background: none;
+  padding: 0;
+  border: 0;
+}
+
+.btn {
+  color: $color-white;
+  background-color: $color-primary;
+  border: 3px solid $color-primary;
+  padding: 9px 10px;
+  min-width: 132px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: $transition-base;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  line-height: 18px;
+  @include respond-to('small') {
+    display: inline-block;
+    min-width: 320px;
+  }
+  @include respond-to('medium') {
+    font-size: 16px;
+    line-height: 19px;
+    padding: 11px 10px;
+  }
+  @include on-event() {
+    box-shadow: 5px 5px 15px 0 rgba(63, 174, 73, .3);
+    background-color: transparent;
+    color: $color-primary;
+  }
+}

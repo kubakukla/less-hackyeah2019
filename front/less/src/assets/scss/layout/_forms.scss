@@ -1,0 +1,68 @@
+.form-group {
+  input, textarea {
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 1);
+    width: 100%;
+    transition: $transition-base;
+    @include respond-to('medium') {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: rgba(0, 0, 0, 0.5);
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: rgba(0, 0, 0, 0.5);
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: rgba(0, 0, 0, 0.5);
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+    padding: 10px 0;
+    &:focus {
+      border-color: rgba(0, 0, 0, 1);
+    }
+  }
+  & + .form-group {
+    margin-top: 12px;
+    @include respond-to('medium') {
+      margin-top: 19px;
+    }
+  }
+  textarea {
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    background-color: rgba(245, 245, 245, 1);
+    margin-top: 5px;
+    padding: 15px 10px;
+    min-height: 110px;
+    @include respond-to('medium') {
+      padding: 19px 15px;
+    }
+    &:focus {
+      border-color: rgba(0, 0, 0, 1);
+    }
+  }
+}
+
+.error-message {
+  display: block;
+  color: crimson;
+  overflow: hidden;
+  max-height: 0;
+  transition: $transition-base;
+  opacity: 0;
+  visibility: hidden;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    max-height: 22px;
+  }
+}
