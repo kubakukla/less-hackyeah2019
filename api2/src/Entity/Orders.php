@@ -26,6 +26,12 @@ class Orders
      */
     private $created_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\OrderItems", inversedBy="order_id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $orderItems;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +57,18 @@ class Orders
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getOrderItems(): ?OrderItems
+    {
+        return $this->orderItems;
+    }
+
+    public function setOrderItems(?OrderItems $orderItems): self
+    {
+        $this->orderItems = $orderItems;
 
         return $this;
     }
