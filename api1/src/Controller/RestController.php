@@ -17,7 +17,6 @@ class RestController extends AbstractController
      */
     public function simulate()
     {
-
         $client = HttpClient::create();
 
         $response = $client->request('POST', 'http://api.hackyeah.bluepaprica.ovh/order/save', [
