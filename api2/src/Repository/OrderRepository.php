@@ -17,6 +17,7 @@ class OrderRepository extends ServiceEntityRepository
 {
     /** @var string  */
     const TOTALS = "totals";
+    const LATEST_ORDERS_LIMIT = 5;
 
     /** @var OrderHelper  */
     private $helper;
@@ -74,5 +75,32 @@ class OrderRepository extends ServiceEntityRepository
             $data[self::TOTALS] = array_merge($data[self::TOTALS], $trash);
         }
         return $data;
+    }
+
+    /**
+     * @param int $userId
+     * @return Order[]
+     */
+    public function getLatestOrdersForUser(int $userId)
+    {
+        $result = [];
+
+        $orders = $this->findBy(
+            ['user_id' => $userId],
+            ['created_at' => 'desc'],
+            self::LATEST_ORDERS_LIMIT
+        );
+
+        foreach ($orders as $order) {
+            $resultItem = [
+                'id' => $order->getId(),
+                'created_at' => $order->getCreatedAt()->getTimestamp(),
+                'item_count' => count($order->getOrderItems()),
+            ];
+            $resultItem = $this->addOrderTrashData($order, $resultItem);
+            $result[] = $resultItem;
+        }
+
+        return $result;
     }
 }
