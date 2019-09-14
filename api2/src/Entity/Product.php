@@ -64,6 +64,11 @@ class Product
      */
     private $code;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tip;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -161,6 +166,18 @@ class Product
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getTip(): ?string
+    {
+        return $this->tip;
+    }
+
+    public function setTip(?string $tip): self
+    {
+        $this->tip = $tip;
 
         return $this;
     }

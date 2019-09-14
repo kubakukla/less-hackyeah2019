@@ -30,7 +30,7 @@ class Order
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order_id")
+     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order")
      */
     private $orderItems;
 
