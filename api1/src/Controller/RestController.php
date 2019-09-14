@@ -24,7 +24,8 @@ class RestController extends AbstractController
         ]);
 
         $statusCode = $response->getStatusCode();
+        $content = $response->getContent();
 
-        return new Response(null, $statusCode);
+        return new Response($content, $statusCode);
     }
 }
