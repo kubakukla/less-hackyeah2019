@@ -2,5 +2,20 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 .footer {
-
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $color-white;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .router-link-exact-active {
+    color: $color-primary;
+  }
 }

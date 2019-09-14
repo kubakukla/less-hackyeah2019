@@ -1,5 +1,5 @@
 <template>
-  <article class="last-buy">
+  <router-link to="/about" tag="article" class="last-buy">
     <div class="last-buy__header">
       <img alt="Vue logo" src="./../../assets/img/logos/spar.png"><em>|</em> 9 items
       <span class="date">one day ago</span>
@@ -10,7 +10,7 @@
       <span class="general">General</span>
       <span class="bio">Bio</span>
     </div>
-  </article>
+  </router-link>
 </template>
 
 <script>
