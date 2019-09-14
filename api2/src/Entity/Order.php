@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
+ * @ORM\Entity(repositoryClass="OrderRepository")
+ * @ORM\Table(name="orders")
  */
-class Orders
+class Order
 {
     /**
      * @ORM\Id()
@@ -29,7 +30,7 @@ class Orders
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\OrderItems", mappedBy="order_id")
+     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order_id")
      */
     private $orderItems;
 
@@ -68,30 +69,30 @@ class Orders
     }
 
     /**
-     * @return Collection|OrderItems[]
+     * @return Collection|OrderItem[]
      */
     public function getOrderItems(): Collection
     {
         return $this->orderItems;
     }
 
-    public function addOrderItem(OrderItems $orderItem): self
+    public function addOrderItem(OrderItem $orderItem): self
     {
         if (!$this->orderItems->contains($orderItem)) {
             $this->orderItems[] = $orderItem;
-            $orderItem->setOrderId($this);
+            $orderItem->setOrder($this);
         }
 
         return $this;
     }
 
-    public function removeOrderItem(OrderItems $orderItem): self
+    public function removeOrderItem(OrderItem $orderItem): self
     {
         if ($this->orderItems->contains($orderItem)) {
             $this->orderItems->removeElement($orderItem);
             // set the owning side to null (unless already changed)
-            if ($orderItem->getOrderId() === $this) {
-                $orderItem->setOrderId(null);
+            if ($orderItem->getOrder() === $this) {
+                $orderItem->setOrder(null);
             }
         }
 

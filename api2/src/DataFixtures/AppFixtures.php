@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Products;
+use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
     private function loadProducts(ObjectManager $manager)
     {
         for ($i = 1; $i <= self::NUMBER_OF_PRODUCTS; $i++) {
-            $product = new Products();
+            $product = new Product();
             $product->setName("Product ${i}");
             $product->setType($i % 5 + 1);
             $product->setCode($i);
