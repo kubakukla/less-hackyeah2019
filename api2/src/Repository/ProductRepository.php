@@ -68,6 +68,7 @@ class ProductRepository extends ServiceEntityRepository
         $data[self::ITEMS][$product->getId()] =
             [
                 'name' => $product->getName(),
+                'tip' => $product->getTip(),
                 'totals_trash' => $this->getPrunedProductTrash($product, $qty)
             ];
         return $data;

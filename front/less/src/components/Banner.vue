@@ -14,7 +14,6 @@
     name: 'Banner',
     data() {
       return {
-        bannerImage
       };
     }
   }
