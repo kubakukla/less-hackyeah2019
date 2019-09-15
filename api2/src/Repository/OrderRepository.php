@@ -96,11 +96,27 @@ class OrderRepository extends ServiceEntityRepository
                 'id' => $order->getId(),
                 'created_at' => $order->getCreatedAt()->getTimestamp(),
                 'item_count' => count($order->getOrderItems()),
+                'store_id' => $order->getShop()->getId(),
             ];
             $resultItem = $this->addOrderTrashData($order, $resultItem);
             $result[] = $resultItem;
         }
 
         return $result;
+    }
+
+    public function getNotification($userId)
+    {
+        $order = $this->findOneBy(
+            ['user_id' => $userId],
+            ['created_at' => 'desc']
+        );
+
+        return [
+            'id' => $order->getId(),
+            'created_at' => $order->getCreatedAt()->getTimestamp(),
+            'item_count' => count($order->getOrderItems()),
+            'store_id' => $order->getShop()->getId(),
+        ];
     }
 }

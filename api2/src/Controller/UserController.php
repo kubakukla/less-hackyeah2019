@@ -24,4 +24,19 @@ class UserController extends AbstractController
 
         return new JsonResponse($orders);
     }
+
+    /**
+     * @Route("/user/{id}/notification")
+     * @param $id
+     * @return JsonResponse
+     */
+    public function notification($id)
+    {
+        /** @var OrderRepository $orderRepository */
+        $orderRepository = $this->getDoctrine()->getRepository(Order::class);
+
+        $order = $orderRepository->getNotification($id);
+
+        return new JsonResponse($order);
+    }
 }

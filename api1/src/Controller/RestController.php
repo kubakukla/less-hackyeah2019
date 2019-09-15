@@ -27,14 +27,17 @@ class RestController extends AbstractController
      */
     public function simulate()
     {
+        $storeId = random_int(1, 3);
         $productCode = random_int(1, 10);
         $productQuantity = random_int(1, 3);
 
         $client = HttpClient::create();
 
         $response = $client->request('POST', 'http://api.hackyeah.bluepaprica.ovh/order/save', [
-            'json' => ['products' => [
-                ["code" => $productCode, "quantity" => $productQuantity]
+            'json' => [
+                'store_id' => $storeId,
+                'products' => [
+                    ["code" => $productCode, "quantity" => $productQuantity]
             ]],
         ]);
 
