@@ -2,7 +2,7 @@
   <main class="home">
     <Banner image="@/assets/img/home/banner.jpg">
       <h1>You bought less<br> plastic than<br> a week ago!</h1>
-      <router-link to="/about" class="btn-link">See statistics <i class="icomoon-left-arrow"></i></router-link>
+      <router-link to="/" class="btn-link">See statistics <i class="icomoon-left-arrow"></i></router-link>
     </Banner>
     <LastChoices />
   </main>

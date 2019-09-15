@@ -1,5 +1,5 @@
 <template>
-  <aside class="navigation" :class="{active: isNavActive, navigation: true}">
+  <aside :class="{active: isNavActive, navigation: true}">
     <button class="close" @click="NavToggle"></button>
     <nav>
       <router-link to="/">
