@@ -1,3 +1,36 @@
 .product {
-
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 21px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+  padding: 23px 20px;
+  color: $color-accent;
+  & + .product {
+    margin-top: 20px;
+  }
+  &__header {
+    display: flex;
+    margin-bottom: 16px;
+    & > span {
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+  &__message {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  &__info {
+    margin-top: 25px;
+    &__item{
+      & + .product__info__item {
+        margin-top: 11px;
+      }
+      & > span {
+        font-size: 14px;
+        margin-right: 6px;
+        width: 11px;
+        display: inline-block;
+      }
+    }
+  }
 }
