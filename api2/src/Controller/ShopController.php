@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Shop;
 use App\Repository\ShopRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,7 +19,7 @@ class ShopController extends AbstractController
     public function getShop($id)
     {
         /** @var ShopRepository $shopRepository */
-        $shopRepository = $this->getDoctrine()->getRepository(ShopRepository::class);
+        $shopRepository = $this->getDoctrine()->getRepository(Shop::class);
         $shop = $shopRepository->find($id);
 
         if (null === $shop) {
