@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Order;
 use App\Entity\OrderItem;
 use App\Entity\Product;
+use App\Entity\Shop;
 use App\Entity\User;
 use App\Repository\ProductRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -13,7 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 class AppFixtures extends Fixture
 {
     const NUMBER_OF_PRODUCTS = 10;
-
+    const SHOPS = ['Spar', 'Leclerc', 'Społem'];
     const PRODUCTS = [
         [
             'name' => 'Bananas',
@@ -123,11 +124,21 @@ class AppFixtures extends Fixture
 
     private function loadOrders(ObjectManager $manager)
     {
+        $shops = [];
+
+        foreach (self::SHOPS as $name) {
+            $shop = new Shop();
+            $shop->setName($name);
+            $manager->persist($shop);
+            $shops[] = $shop;
+        }
+
         for ($i = 0; $i < 10; $i++) {
             $order = new Order();
             $order->setUserId(1);
             $hoursAgo = random_int(-4, -1) - $i;
             $order->setCreatedAt(new \DateTime($hoursAgo.' hours'));
+            $order->setShop($shops[array_rand($shops)]);
             $manager->persist($order);
 
             $productCount = random_int(2, 5);

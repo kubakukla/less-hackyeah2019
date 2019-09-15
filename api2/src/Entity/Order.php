@@ -34,6 +34,12 @@ class Order
      */
     private $orderItems;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Shop", inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $shop;
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -95,6 +101,18 @@ class Order
                 $orderItem->setOrder(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShop(): ?Shop
+    {
+        return $this->shop;
+    }
+
+    public function setShop(?Shop $shop): self
+    {
+        $this->shop = $shop;
 
         return $this;
     }

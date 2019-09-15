@@ -96,6 +96,7 @@ class OrderRepository extends ServiceEntityRepository
                 'id' => $order->getId(),
                 'created_at' => $order->getCreatedAt()->getTimestamp(),
                 'item_count' => count($order->getOrderItems()),
+                'store_id' => $order->getShop()->getId(),
             ];
             $resultItem = $this->addOrderTrashData($order, $resultItem);
             $result[] = $resultItem;
@@ -115,6 +116,7 @@ class OrderRepository extends ServiceEntityRepository
             'id' => $order->getId(),
             'created_at' => $order->getCreatedAt()->getTimestamp(),
             'item_count' => count($order->getOrderItems()),
+            'store_id' => $order->getShop()->getId(),
         ];
     }
 }
