@@ -1,9 +1,7 @@
 <template>
   <div class="panel">
     <div class="container">
-      <div class="container container--inside">
-        <h2>You bought {{products_count}} items</h2>
-      </div>
+      <h2>You bought {{products_count}} items</h2>
       <Product v-for="product in products"
                :product_name="product.name"
                :totals="product.totals_trash"

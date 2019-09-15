@@ -1,9 +1,7 @@
 <template>
   <div class="panel">
     <div class="container">
-      <div class="container container--inside">
-        <h2>Latest choices</h2>
-      </div>
+      <h2>Latest choices</h2>
       <LastChoice v-for="lastChoice in lastChoices.data"
                   :count="lastChoice.item_count"
                   :garbage="lastChoice.totals"
