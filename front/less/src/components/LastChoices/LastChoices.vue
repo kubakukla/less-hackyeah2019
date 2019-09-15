@@ -33,7 +33,6 @@
     mounted () {
       this.axios.get('http://api.hackyeah.bluepaprica.ovh/user/1/orders').then((response) => {
         this.lastChoices = response;
-        console.log(response)
       }).catch(error => {
         console.log(error);
       })

@@ -32,7 +32,6 @@
       this.axios.get('http://api.hackyeah.bluepaprica.ovh/order/get/' + this.$route.params.id).then((response) => {
         this.products = response.data.items;
         this.products_count = Object.keys(this.products).length;
-        console.log(this.products);
       }).catch(error => {
         console.log(error);
       })
