@@ -141,7 +141,7 @@ class AppFixtures extends Fixture
             $order->setShop($shops[array_rand($shops)]);
             $manager->persist($order);
 
-            $productCount = random_int(2, 5);
+            $productCount = random_int(2, 4);
             for ($j = 0; $j < $productCount; $j++) {
                 $item = new OrderItem();
 
