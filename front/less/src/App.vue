@@ -31,6 +31,7 @@
         this.axios.post('http://api.simulation.hackyeah.bluepaprica.ovh/simulate').then((response) => {
           this.$store.commit('changeModalActive');
           this.$store.commit('changeSimulateShopping', response.data.id);
+          console.log(response.data);
         }).catch(error => {
           console.log(error);
         })
