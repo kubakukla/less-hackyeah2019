@@ -24,7 +24,7 @@
         <span class="icomoon-recycling-bin5" v-if="getBin(this.totals) == 'GLASS'"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span></span>
         Recycle into : <strong>{{getBin(this.totals)}} bin</strong>
       </div>
-      <div class="product__info__item">
+      <div class="product__info__item" v-if="getBin(this.totals) == 'PAPER'">
         <span class="icomoon-triangle"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
         Remember, it needs to be <strong>clean and dry!</strong>
       </div>
