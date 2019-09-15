@@ -6,15 +6,15 @@
         <span>Home</span>
         <i class="icomoon-home"></i>
       </router-link>
-      <router-link to="/about">
+      <router-link to="/">
         <span>My Profile</span>
         <i class="icomoon-user"></i>
       </router-link>
-      <router-link to="/about">
+      <router-link to="/">
         <span>Statistics</span>
         <i class="icomoon-chart"></i>
       </router-link>
-      <router-link to="/about">
+      <router-link to="/">
         <span>Blog</span>
         <i class="icomoon-book"></i>
       </router-link>

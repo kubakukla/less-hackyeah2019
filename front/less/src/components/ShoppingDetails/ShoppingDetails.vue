@@ -3,6 +3,7 @@
     <div class="container">
       <div class="container container--inside">
         <h2>You bought 5 items</h2>
+        {{this.$route.params.id}}
       </div>
       <Notebook />
     </div>

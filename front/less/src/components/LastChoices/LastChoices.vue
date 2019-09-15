@@ -4,15 +4,14 @@
       <div class="container container--inside">
         <h2>Latest choices</h2>
       </div>
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
-      <LastChoice />
+      <LastChoice v-for="lastChoice in lastChoices.data"
+                  :count="lastChoice.item_count"
+                  :garbage="lastChoice.totals"
+                  :date="lastChoice.created_at | formatDate"
+                  :order_id="lastChoice.id"
+                  :store_id="lastChoice.store_id"
+                  :key="lastChoice.id"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +24,31 @@
     name: 'LastChoices',
     components: {
       LastChoice
-    }
+    },
+    data: function () {
+      return {
+        lastChoices: []
+      }
+    },
+    mounted () {
+      this.axios.get('http://api.hackyeah.bluepaprica.ovh/user/1/orders').then((response) => {
+        this.lastChoices = response;
+        console.log(response)
+      }).catch(error => {
+        console.log(error);
+      })
+    },
+    filters: {
+      formatDate: function (value) {
+        if (!value) {return ''}
+        let data = new Date(value * 1000);
+        let day = data.getUTCDay();
+        day = day < 10 ? '0' + day : day;
+        let month = data.getMonth();
+        month = month < 10 ? '0' + month : month;
+        let year = data.getFullYear();
+        return day + "/" + month + "/" + year;
+      }
+    },
   }
 </script>
