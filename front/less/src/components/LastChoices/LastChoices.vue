@@ -9,6 +9,7 @@
                   v-bind:garbage="lastChoice.totals"
                   v-bind:date="lastChoice.created_at | formatDate"
                   v-bind:order_id="lastChoice.id"
+                  :key="lastChoice.id"
       />
     </div>
   </div>
