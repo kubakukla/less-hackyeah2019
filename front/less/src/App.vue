@@ -8,6 +8,7 @@
       Simulate Shopping
       <i class="icomoon-shopping-cart"></i>
     </button>
+    <Modal />
   </div>
 </template>
 
@@ -16,21 +17,27 @@
   import Header from '@/components/Layout/Header.vue';
   import Nav from '@/components/Layout/Nav.vue';
   import Footer from '@/components/Layout/Footer.vue';
+  import Modal from '@/components/Layout/Modal.vue';
 
   export default {
     components: {
       Header,
       Nav,
-      Footer
+      Footer,
+      Modal
     },
     methods: {
       getShopData() {
-        this.axios.get('http://api.simulation.hackyeah.bluepaprica.ovh/simulate').then((response) => {
-          console.log(response.data);
+        this.axios.post('http://api.simulation.hackyeah.bluepaprica.ovh/simulate').then((response) => {
+          this.$store.commit('changeModalActive');
+          this.$store.commit('changeSimulateShopping', response.data.id);
         }).catch(error => {
           console.log(error);
         })
       }
+    },
+    updated() {
+      this.$store.commit('changeModalOff');
     }
   }
 </script>
