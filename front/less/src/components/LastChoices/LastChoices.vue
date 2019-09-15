@@ -5,10 +5,11 @@
         <h2>Latest choices</h2>
       </div>
       <LastChoice v-for="lastChoice in lastChoices.data"
-                  v-bind:count="lastChoice.item_count"
-                  v-bind:garbage="lastChoice.totals"
-                  v-bind:date="lastChoice.created_at | formatDate"
-                  v-bind:order_id="lastChoice.id"
+                  :count="lastChoice.item_count"
+                  :garbage="lastChoice.totals"
+                  :date="lastChoice.created_at | formatDate"
+                  :order_id="lastChoice.id"
+                  :store_id="lastChoice.store_id"
                   :key="lastChoice.id"
       />
     </div>
@@ -32,6 +33,7 @@
     mounted () {
       this.axios.get('http://api.hackyeah.bluepaprica.ovh/user/1/orders').then((response) => {
         this.lastChoices = response;
+        console.log(response)
       }).catch(error => {
         console.log(error);
       })

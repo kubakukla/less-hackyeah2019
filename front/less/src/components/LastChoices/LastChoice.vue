@@ -1,7 +1,15 @@
 <template>
   <router-link :to="{ name: 'details', params: {id: order_id } }" tag="article" class="last-buy">
     <div class="last-buy__header">
-      <img alt="Vue logo" src="./../../assets/img/logos/spar.png"><em>|</em> {{count}} items
+      <template v-if="store_id == 1">
+        <img alt="Vue logo" src="./../../assets/img/logos/spar.png"><em>|</em> {{count}} items
+      </template>
+      <template v-if="store_id == 2">
+        <img alt="Vue logo" src="./../../assets/img/logos/leclerc.png"><em>|</em> {{count}} items
+      </template>
+      <template v-if="store_id == 3">
+        <img alt="Vue logo" src="./../../assets/img/logos/spolem.png"><em>|</em> {{count}} items
+      </template>
       <span class="date">{{date}}</span>
     </div>
     <div class="sort-list">
@@ -19,6 +27,6 @@
 
   export default {
     name: 'LastChoice',
-    props: ['count', 'garbage', 'date', 'order_id']
+    props: ['count', 'garbage', 'date', 'order_id', 'store_id']
   }
 </script>
