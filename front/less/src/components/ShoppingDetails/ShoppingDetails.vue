@@ -4,7 +4,6 @@
       <div class="container container--inside">
         <h2>You bought 5 items</h2>
       </div>
-      <Bannanas />
       <Notebook />
     </div>
   </div>
@@ -12,13 +11,11 @@
 
 <script>
   // @ is an alias to /src
-  import Bannanas from '@/components/Products/Bannanas.vue';
   import Notebook from '@/components/Products/Notebook.vue';
 
   export default {
     name: 'LastChoices',
     components: {
-      Bannanas,
       Notebook
     }
   }
