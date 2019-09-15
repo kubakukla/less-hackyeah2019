@@ -2,22 +2,40 @@
   <div class="panel">
     <div class="container">
       <div class="container container--inside">
-        <h2>You bought 5 items</h2>
-        {{this.$route.params.id}}
+        <h2>You bought {{products_count}} items</h2>
       </div>
-      <Notebook />
+      <Product v-for="product in products"
+               :product_name="product.name"
+               :totals="product.totals_trash"
+               :tip="product.tip"
+      />
     </div>
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
-  import Notebook from '@/components/Products/Notebook.vue';
+  import Product from '@/components/Products/Product.vue';
 
   export default {
-    name: 'LastChoices',
+    name: 'ShoppingDetails',
     components: {
-      Notebook
-    }
+      Product
+    },
+    data: function () {
+      return {
+        products: [],
+        products_count: null
+      }
+    },
+    mounted () {
+      this.axios.get('http://api.hackyeah.bluepaprica.ovh/order/get/' + this.$route.params.id).then((response) => {
+        this.products = response.data.items;
+        this.products_count = Object.keys(this.products).length;
+        console.log(this.products);
+      }).catch(error => {
+        console.log(error);
+      })
+    },
   }
 </script>
