@@ -40,13 +40,13 @@
     filters: {
       formatDate: function (value) {
         if (!value) {return ''}
-        let data = new Date(value * 1000);
-        let day = data.getUTCDay();
-        day = day < 10 ? '0' + day : day;
-        let month = data.getMonth();
-        month = month < 10 ? '0' + month : month;
-        let year = data.getFullYear();
-        return day + "/" + month + "/" + year;
+        return new Date(value * 1000).toLocaleDateString(
+                'en-GB', {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                }
+        );
       }
     },
   }
