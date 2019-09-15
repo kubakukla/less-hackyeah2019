@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/details" tag="article" class="last-buy">
+  <router-link :to="{ name: 'details', params: {id: order_id } }" tag="article" class="last-buy">
     <div class="last-buy__header">
-      <img alt="Vue logo" src="./../../assets/img/logos/spar.png"><em>|</em> Number of items: {{count}}
+      <img alt="Vue logo" src="./../../assets/img/logos/spar.png"><em>|</em> {{count}} items
       <span class="date">{{date}}</span>
     </div>
     <div class="sort-list">
