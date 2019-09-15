@@ -37,5 +37,10 @@
         background-color: rgba(198, 155, 142, 1);
       }
     }
+    &.glass {
+      &:before {
+        background-color: rgba(192, 217, 171, 1);
+      }
+    }
   }
 }
