@@ -29,18 +29,33 @@ class RestController extends AbstractController
     {
         $client = HttpClient::create();
 
+        $productIds = $this->randomRange(1, 10, random_int(2, 4));
+
+        $products = [];
+        foreach ($productIds as $productId) {
+            $products[] = [
+                'code' => $productId,
+                'quantity' => random_int(1, 3)
+            ];
+        }
+
         $response = $client->request('POST', 'http://api.hackyeah.bluepaprica.ovh/order/save', [
             'json' => [
                 'store_id' => random_int(1, 3),
-                'products' => [
-                    ["code" => random_int(1, 10), "quantity" => random_int(1, 3)],
-                    ["code" => random_int(1, 10), "quantity" => random_int(1, 3)],
-            ]],
+                'products' => $products
+            ],
         ]);
 
         $statusCode = $response->getStatusCode();
         $content = $response->getContent();
 
         return new Response($content, $statusCode);
+    }
+
+    private function randomRange($min, $max, $length)
+    {
+        $numbers = range($min, $max);
+        shuffle($numbers);
+        return array_slice($numbers, 0, $length);
     }
 }

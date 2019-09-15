@@ -141,11 +141,10 @@ class AppFixtures extends Fixture
             $order->setShop($shops[array_rand($shops)]);
             $manager->persist($order);
 
-            $productCount = random_int(2, 4);
-            for ($j = 0; $j < $productCount; $j++) {
+            $productIds = $this->randomRange(1, 10, random_int(2, 4));
+            foreach ($productIds as $productId) {
                 $item = new OrderItem();
 
-                $productId = random_int(1, self::NUMBER_OF_PRODUCTS);
                 $product = $this->productRepository->find($productId);
 
                 $item->setProduct($product);
@@ -154,5 +153,12 @@ class AppFixtures extends Fixture
                 $manager->persist($item);
             }
         }
+    }
+
+    private function randomRange($min, $max, $length)
+    {
+        $numbers = range($min, $max);
+        shuffle($numbers);
+        return array_slice($numbers, 0, $length);
     }
 }
