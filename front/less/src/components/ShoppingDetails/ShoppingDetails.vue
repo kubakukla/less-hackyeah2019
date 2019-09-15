@@ -8,6 +8,7 @@
                :product_name="product.name"
                :totals="product.totals_trash"
                :tip="product.tip"
+               :key="product.name"
       />
     </div>
   </div>
@@ -22,7 +23,7 @@
     components: {
       Product
     },
-    data: function () {
+    data() {
       return {
         products: [],
         products_count: null
@@ -30,6 +31,7 @@
     },
     mounted () {
       this.axios.get('http://api.hackyeah.bluepaprica.ovh/order/get/' + this.$route.params.id).then((response) => {
+        console.log(response.data.items)
         this.products = response.data.items;
         this.products_count = Object.keys(this.products).length;
       }).catch(error => {
